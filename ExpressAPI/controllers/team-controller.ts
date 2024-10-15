@@ -1,9 +1,7 @@
-import * as express from "express";
-const router = express.Router();
-import { Request, Response } from "express";
+import { Router, Request, Response } from "express";
+const router = Router();
 import { Team } from "../entities/Team";
 import { Player } from "../entities/Player";
-
 import { dataSource } from "../data-source";
 
 // Get a list of all teams
@@ -26,7 +24,9 @@ router.get("/team/:id", async function (req: Request, res: Response) {
 // Get all players on a team
 router.get("/team/:team_id/players", async function (req: Request, res: Response) {
     // Get all players with the given team id
-    const players = await dataSource.getRepository(Player).find({ where: { team_id: parseInt(req.params.team_id) } });
+    const players = await dataSource.getRepository(Player).find({ 
+        where: { team_id: parseInt(req.params.team_id) } 
+    });
 
     // Send the list of teams
     res.status(200).send(players);
@@ -77,3 +77,5 @@ router.delete("/team/:id", async function (req: Request, res: Response) {
     // Send the result of the deletion
     res.status(204).send(results)
 });
+
+export default router;

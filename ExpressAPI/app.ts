@@ -1,10 +1,8 @@
 // Get environment variables and get the port
 import * as express from "express";
 import 'reflect-metadata';
-import { Request, Response } from "express";
-import { Team } from "./entities/Team";
-import { Player } from "./entities/Player";
-import { dataSource } from "./data-source";
+import playerRouter from "./controllers/player-controller"
+import teamRouter from "./controllers/team-controller"
 
 const port = process.env.PORT || 8080;
 
@@ -12,14 +10,13 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 // MIDDLEWARE
-app.use(express.json());
+//app.use(express.json());
 
 // ROUTING
-const playerController = require('./controllers/player-controller');
-app.use('/player', playerController);
+app.use('/player', playerRouter);
 
 const teamController = require('./controllers/team-controller');
-app.use('/team', teamController);
+app.use('/team', teamRouter);
 
 // Launch app
 app.listen(port, () => {

@@ -1,6 +1,5 @@
-import * as express from "express";
-const router = express.Router();
-import { Request, Response } from "express";
+import { Router, Request, Response } from "express";
+const router = Router();
 import { Player } from "../entities/Player";
 import { dataSource } from "../data-source";
 
@@ -66,3 +65,5 @@ router.delete("/player/:id", async function (req: Request, res: Response) {
     // Send the result of the deletion
     res.status(204).send(results)
 });
+
+export default router;
