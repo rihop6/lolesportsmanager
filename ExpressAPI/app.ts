@@ -3,19 +3,28 @@ import * as express from "express";
 import 'reflect-metadata';
 import playerRouter from "./controllers/player-controller"
 import teamRouter from "./controllers/team-controller"
+import { dataSource } from "./data-source";
 
 const port = process.env.PORT || 8080;
+
+// establish database connection
+dataSource
+    .initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err)
+});
 
 // Set up express app
 const app = express();
 
 // MIDDLEWARE
-//app.use(express.json());
+app.use(express.json());
 
 // ROUTING
 app.use('/player', playerRouter);
-
-const teamController = require('./controllers/team-controller');
 app.use('/team', teamRouter);
 
 // Launch app
