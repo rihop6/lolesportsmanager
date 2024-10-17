@@ -37,7 +37,7 @@ DB_DATABASE=(database name you chose)
 
 # REST API
 
-The REST API to the backend is described below.
+The REST API to the backend is described below. Detailed examples are available in the postman dump in the docs folder. These can be imported and viewed in postman.
 
 ## Get list of Players
 
@@ -45,18 +45,7 @@ The REST API to the backend is described below.
 
 `GET /player`
 
-    http://localhost:8080/player/1
-
-### Response
-
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 2
-
-    []
+    GET http://localhost:8080/player
 
 ## Get specific player
 
@@ -64,7 +53,7 @@ The REST API to the backend is described below.
 
 `GET /player/:id`
 
-### Response
+    GET http://localhost:8080/player/1
 
 ## Create player 
 
@@ -72,7 +61,14 @@ The REST API to the backend is described below.
 
 `POST /player`
 
-### Response
+    POST http://localhost:8080/player
+    body: {
+        "username": "Username",
+        "name": "Name",
+        "role": "Fill",
+        "team_id": 1,
+        "avatar": null
+    }
 
 ## Update player
 
@@ -80,8 +76,14 @@ The REST API to the backend is described below.
 
 `PUT /player/:id`
 
-
-### Response
+    PUT http://localhost:8080/player/1
+    body: {
+        "username": "NewUsername",
+        "name": "NewName",
+        "role": "Mid",
+        "team_id": 2,
+        "avatar": null
+    }
 
 ## Delete player
 
@@ -89,7 +91,7 @@ The REST API to the backend is described below.
 
 `DELETE /player/:id`
 
-### Response
+    DELETE http://localhost:8080/player/1
 
 ## Get list of Teams
 
@@ -97,7 +99,7 @@ The REST API to the backend is described below.
 
 `GET /team`
 
-### Response
+    GET http://localhost:8080/team
 
 ## Get specific team
 
@@ -105,7 +107,7 @@ The REST API to the backend is described below.
 
 `GET /team/:id`
 
-### Response
+    GET http://localhost:8080/team/1
 
 ## Get all players on specified team
 
@@ -113,7 +115,7 @@ The REST API to the backend is described below.
 
 `GET /team/:team_id/players`
 
-### Response
+    GET http://localhost:8080/team/1/players
 
 ## Create team 
 
@@ -121,7 +123,13 @@ The REST API to the backend is described below.
 
 `POST /team`
 
-### Response
+    POST http://localhost:8080/team
+    body: {
+        "teamname": "Teamname",
+        "league": "League",
+        "country": "Country",
+        "logo": null
+    }
 
 ## Update team
 
@@ -129,12 +137,18 @@ The REST API to the backend is described below.
 
 `PUT /team/:id`
 
-### Response
+    PUT http://localhost:8080/team/1
+    body: {
+        "teamname": "NewTeamname",
+        "league": "NewLeague",
+        "country": "NewCountry",
+        "logo": null
+    }
 
 ## Delete team
 
 ### Request
 
-`GET /team/:id`
+`DELETE /team/:id`
 
-### Response
+    DELETE http://localhost:8080/team/1
