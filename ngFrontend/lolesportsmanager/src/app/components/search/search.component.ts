@@ -18,6 +18,10 @@ export class SearchComponent {
   players: Player[] = [];
 
   constructor(private httpService: HttpserviceService) {
+    
+  }
+
+  ngOnInit(): void {
     this.getAllData();
   }
 
@@ -53,9 +57,6 @@ export class SearchComponent {
           ));
         }
       this.players = tempPlayers;
-      for(let p of this.players) {
-        console.log(`Player loaded: ${p.username}`);
-      }
     });
   }
 }

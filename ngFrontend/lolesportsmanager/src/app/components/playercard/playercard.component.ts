@@ -12,6 +12,7 @@ import { HttpserviceService } from '../../services/httpservice.service';
 export class PlayercardComponent {
   @Input() player!: Player;
   playerteam: string = '';
+  roleimg: string = '';
 
   constructor(private httpService: HttpserviceService) {
     
@@ -19,6 +20,20 @@ export class PlayercardComponent {
 
   ngOnInit() {
     this.getPlayerTeam();
+    switch(this.player.role.toLocaleLowerCase()) {
+      case 'top':
+      case 'jungle':
+      case 'mid':
+      case 'adc':
+      case 'support':
+      case 'fill':
+      case 'coach':
+        this.roleimg = `${this.player.role.toLowerCase()}.png`;
+        break;
+      default:
+        this.roleimg = "fill.png";
+        break;
+    }
   }
 
   getPlayerTeam() {
