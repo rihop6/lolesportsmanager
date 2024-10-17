@@ -10,8 +10,6 @@ This project was completed based on a prompt for an assigned project. The prompt
 
 ![Project Architecture](docs/architecture.png)
 
-
-
 # INSTALLATION
 ## 1. Postgres (pgAdmin) setup
 Set up pgAdmin. Installation instructions can be found here: https://www.pgadmin.org/download/.
@@ -49,6 +47,12 @@ DB_USER=(username for postgres- usually postgres)
 DB_PASSWORD=(password you set on postgres)
 DB_DATABASE=(database name you chose)
 ```
+
+## 3. Start app
+Open a terminal in the ExpressAPI folder and run the command:
+    nodemon
+Open a terminal in the ngFrontend/lolesportsmanager folder and run the command:
+    ng serve --open
 
 # REST API
 
