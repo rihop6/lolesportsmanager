@@ -5,6 +5,13 @@
         <p class="title">Esports Manager</p>
         <app-searchbar class="search"></app-searchbar>
         <div class="searchcontent">
+            @for (t of teams; track $index) {
+                <app-teamcard [team]="t" class="player"></app-teamcard>
+            }
+            
+            @for (pl of players; track $index) {
+                <app-playercard [player]="pl" class="player"></app-playercard>
+            }
         </div>
     </div>
 </div>

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+
+.playercard {
+    position: relative;
+    width: 352px;
+    height: 145px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 00) 0%, rgb(36.11, 36.11, 36.11) 100%);
+    border: 2px solid rgb(69, 69, 69);
+    border-radius: 15px;
+}
+
+.avatar {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    z-index: 1;
+}
+
+.info {
+    margin: 0 0 0 8px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 100;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    z-index: 1;
+}
+
+.playercard h1 {
+    margin: 0 0 12px;
+    padding: 0px;
+    width: 180px;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.playercard p {
+    margin: 0 0 8px;
+    padding: 0px;
+    width: 180px;
+    z-index: 1;
+}
+
+.role {
+    margin: 0 20px;
+    padding: 0px;
+    width: 64px;
+    height: 64px;
+    z-index: 1;
+}
+
+.team {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: auto;
+    z-index: 0;
+    opacity: 20%;
+}
