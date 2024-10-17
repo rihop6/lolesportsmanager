@@ -1,6 +1,18 @@
 # lolesportsmanager
 
-# INSTALLATION INSTRUCTIONS
+## Table of Contents
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [REST API](#rest-api)
+
+# INTRODUCTION
+This project was completed based on a prompt for an assigned project. The prompt was to create an application for a sports management admin. The project consists of a standard three-tier architecture with a PostgreSQl database, an Express RESTful API backend using TypeORM for database communication, and an Angular frontend for user interfacing. Below is a detailed architecture diagram: 
+
+![Project Architecture](docs/architecture.png)
+
+
+
+# INSTALLATION
 ## 1. Postgres (pgAdmin) setup
 Set up pgAdmin. Installation instructions can be found here: https://www.pgadmin.org/download/.
 
@@ -23,6 +35,9 @@ CREATE TABLE teams (
     logo BYTEA
 );
 ```
+
+An ERD of the tables can also be seen here:
+![Entity Relationship Diagram](docs/ERD.png)
 
 ## 2. Create .env variables
 In the ExpressAPI folder, create a .env file. Paste the following into the .env file, filling out the relevant information.
