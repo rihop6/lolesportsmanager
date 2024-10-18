@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="games">
-            <img src="{{ roleimg }}.png" alt="Role Image" class="rolepng"/>
+            <img src="{{ roleimg.toLowerCase() }}.png" alt="Role Image" class="rolepng"/>
             <div>
                 <label for="roleimg">Role</label>
                 <select type="text" name="roleimg" id="roleimg" [(ngModel)]="roleimg">
@@ -62,7 +62,7 @@
             <app-teamcard *ngIf="selectedTeam" [team]="selectedTeam" class="selectedTeam"></app-teamcard>
         </div>
 
-        <button class="submit" (click)="createPlayer()">Create</button>
+        <button class="submit" (click)="submitPlayer()">{{ isPlayerUpdateMode || isTeamUpdateMode ? 'Update' : 'Create' }}</button>
     </div>
 </div>
 
@@ -90,6 +90,6 @@
             </div>
         </div>
 
-        <button class="submit" (click)="createTeam()">Create</button>
+        <button class="submit" (click)="submitTeam()">{{ isPlayerUpdateMode || isTeamUpdateMode ? 'Update' : 'Create' }}</button>
     </div>
 </div>

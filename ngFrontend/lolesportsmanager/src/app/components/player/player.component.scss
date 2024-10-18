@@ -140,3 +140,29 @@ h1 {
 .selectedTeam {
     margin: 25px 0 0 -50px;
 }
+
+.buttons {
+    margin: 30px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    right: 0;
+}
+
+.buttons div {
+    margin: 0 40px 0 0;
+}
+
+.buttons img {
+    width: 80px;
+    cursor: pointer;
+}
+
+.buttons p {
+    margin: 0px;
+    font-size: 20px;
+    font-family: 'Content', sans-serif;
+    color: white;
+}

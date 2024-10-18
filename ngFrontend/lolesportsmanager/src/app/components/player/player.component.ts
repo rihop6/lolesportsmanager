@@ -34,9 +34,12 @@ export class PlayerComponent implements OnInit {
     this.router.navigate(['/team', t_id]);
   }
 
+  updateRoute() {
+    this.router.navigate(['/create/player', this.player.id]);
+  }
+
   loadPlayer() {
     let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     if(id !== null) {
       this.httpService.getPlayer(Number(id)).subscribe(data => {
         if(data.body) {
@@ -78,6 +81,12 @@ export class PlayerComponent implements OnInit {
 
   capitalizeRole(): string {
     return this.player.role.charAt(0).toUpperCase() + this.player.role.slice(1);
+  }
+
+  deletePlayer() {
+    this.httpService.deletePlayer(this.player.id).subscribe(data => {
+      this.router.navigate(['']);
+    });
   }
   
 }

@@ -26,6 +26,10 @@ export class TeamComponent {
     this.router.navigate(['/player', p_id]);
   }
 
+  updateRoute() {
+    this.router.navigate(['/create/team', this.team.id]);
+  }
+
   loadTeam() {
     let id = this.route.snapshot.paramMap.get('id');
     console.log(id);
@@ -48,6 +52,12 @@ export class TeamComponent {
     this.httpService.getPlayersOnTeam(this.team.id).subscribe(data => {
       if(data.body)
         this.players = data.body;
+    });
+  }
+
+  deleteTeam() {
+    this.httpService.deleteTeam(this.team.id).subscribe(data => {
+      this.router.navigate(['']);
     });
   }
 }

@@ -16,6 +16,16 @@ export const routes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
+        path: 'create/player/:pid',
+        component: CreateComponent,
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'create/team/:tid',
+        component: CreateComponent,
+        runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'player/:id',
         component: PlayerComponent,
         runGuardsAndResolvers: 'always'

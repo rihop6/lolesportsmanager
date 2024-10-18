@@ -7,6 +7,7 @@ import { HttpserviceService } from '../../services/httpservice.service';
 import { TeamliComponent } from '../teamli/teamli.component';
 import { EventEmitter } from '@angular/core';
 import { TeamcardComponent } from '../teamcard/teamcard.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -16,14 +17,17 @@ import { TeamcardComponent } from '../teamcard/teamcard.component';
   styleUrl: './create.component.scss'
 })
 export class CreateComponent implements OnInit {
+  isPlayerUpdateMode: boolean = false;
+  isTeamUpdateMode: boolean = false;
   isSearchExpanded = false;
   isActive: string = 'player';
   error: string = '';
   success: string = '';
 
   // Player form
+  id: number = 0;
   username: string = '';
-  name:string = '';
+  name: string = '';
   roleimg: string = 'fill';
   team: string = '';
   selectedTeam!: Team;
@@ -36,10 +40,86 @@ export class CreateComponent implements OnInit {
   teams: Team[] = [];
   filteredTeams: Team[] = [];
 
-  constructor(private httpService: HttpserviceService) {}
+  constructor(private httpService: HttpserviceService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const playerId = Number(params['pid']);
+      const teamId = Number(params['tid']);
+
+      if (playerId) {
+        this.id = playerId;
+        this.isPlayerUpdateMode = true;
+        this.loadPlayerData(playerId);
+      }
+      if(teamId) {
+        this.isActive = 'team';
+        this.id = teamId;
+        this.isTeamUpdateMode = true;
+        this.loadTeamData(teamId);
+      }
+    });
     this.getTeams();
+  }
+
+  loadPlayerData(id: number) {
+    if(id !== null) {
+      this.httpService.getPlayer(id).subscribe(data => {
+        if(data.body) {
+          this.username = data.body.username;
+          this.name = data.body.name;
+          this.roleimg = data.body.role;
+          this.httpService.getTeam(data.body.team_id).subscribe(data => {
+            if(data.body) {
+              this.team = data.body.teamname;
+              this.selectedTeam = data.body;
+            }
+          });
+        }
+      });
+    }
+  }
+
+  loadTeamData(id: number) {
+    if(id !== null) {
+      this.httpService.getTeam(id).subscribe(data => {
+        if(data.body) {
+          this.teamname = data.body.teamname;
+          this.league = data.body.league;
+          this.country = data.body.country;
+        }
+      });
+    }
+  }
+
+  submitPlayer() {
+    if(this.isPlayerUpdateMode)
+      this.updatePlayer();
+    else
+      this.createPlayer();
+  }
+
+  // updating a player
+  updatePlayer() {
+    if(!this.selectedTeam || !this.username || !this.name || !this.roleimg)
+    {
+      this.error = 'All fields must be entered!';
+      return;
+    }
+    this.error = '';
+    let team_id = this.selectedTeam.id;
+    let updatedPlayer = new Player(
+      this.id,
+      this.username,
+      this.name,
+      this.roleimg,
+      team_id,
+      null
+    );
+
+    this.httpService.updatePlayer(this.id, updatedPlayer).subscribe(data => {
+      this.success = 'Player Updated!';
+    });
   }
 
   // creating a player
@@ -62,6 +142,34 @@ export class CreateComponent implements OnInit {
 
     this.httpService.createPlayer(newPlayer).subscribe(data => {
       this.success = 'Player Created!';
+    });
+  }
+
+  submitTeam() {
+    if(this.isTeamUpdateMode)
+      this.updateTeam();
+    else
+      this.createTeam();
+  }
+
+  // updating a player
+  updateTeam() {
+    if(!this.teamname || !this.league || !this.country)
+    {
+      this.error = 'All fields must be entered!';
+      return;
+    }
+    this.error = '';
+    let updatedTeam = new Team(
+      this.id,
+      this.teamname,
+      this.league,
+      this.country,
+      null
+    );
+
+    this.httpService.updateTeam(this.id, updatedTeam).subscribe(data => {
+      this.success = 'Team Updated!';
     });
   }
 
