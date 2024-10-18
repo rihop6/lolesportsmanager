@@ -1,0 +1,18 @@
+<img src="team_default.png" class="teambg"/>
+<div class="content">
+    <img src="team_default.png" alt="avatar" class="avatarimg"/>
+    <div class="inputs">
+        <div>
+            <label for="username">{{ team.teamname }}</label>
+            <h1>{{ team.league }} - {{ team.country }}</h1>
+        </div>
+        <div>
+            <label for="roster">Roster</label>
+            <div class="searchcontent">             
+                @for (pl of players; track $index) {
+                    <app-playercard [player]="pl" (click)="playerClick(pl.id)" class="player"></app-playercard>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,95 @@
-<p>create works!</p>
+<img src="team_default.png" class="teambg"/>
+<div class="toggle">
+    <button  [class.active]="isActive === 'player'" (click)="isActive = 'player'">{{ isActive === 'player' ?  '✓' : ''}} Player</button>
+    <button  [class.active]="isActive === 'team'" (click)="isActive = 'team'">{{ isActive === 'team' ?  '✓' : ''}} Team</button>
+</div>
+<p class="error">{{ error }}</p>
+<p class="success">{{ success }}</p>
+<div *ngIf="isActive === 'player'" class="content">
+    <div class="avatar">
+        <img src="portrait.png" alt="portrait background" class="portraitimg"/>
+        <img src="avatar_light.png" alt="avatar" class="avatarimg"/>
+        <img src="add.png" alt="add button" class="addimg"/>
+    </div>
+    <div class="inputs">
+        <div class="names">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" [(ngModel)]="username" placeholder="Enter player's username...">
+            </div>
+
+            <div>
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" [(ngModel)]="name" placeholder="Enter player's full name...">
+            </div>
+        </div>
+        <div class="games">
+            <img src="{{ roleimg }}.png" alt="Role Image" class="rolepng"/>
+            <div>
+                <label for="roleimg">Role</label>
+                <select type="text" name="roleimg" id="roleimg" [(ngModel)]="roleimg">
+                    <option [value]="'top'">Toplane</option>
+                    <option [value]="'jungle'">Jungle</option>
+                    <option [value]="'mid'">Midlane</option>
+                    <option [value]="'adc'">Botlane</option>
+                    <option [value]="'support'">Support</option>
+                    <option [value]="'fill'">Fill</option>
+                    <option [value]="'coach'">Coach</option>
+                </select>
+            </div>
+
+            <div class="searchdiv" [ngClass]="{'expanded': isSearchExpanded}">
+                <label for="team">Team</label>
+                <input 
+                    type="text" 
+                    name="team" 
+                    id="team" 
+                    [(ngModel)]="team" 
+                    (focus)="expandSearch()"
+                    (blur)="collapseSearch()"
+                    (input)="filterTeams()"
+                    placeholder="Enter team's name here..."/>
+                <div class="team-list">
+                    <ul>
+                        @for (t of filteredTeams; track $index) {
+                            <app-teamli 
+                            [team]="t"
+                            (selectTeamEvent)="selectTeam($event)"></app-teamli>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <app-teamcard *ngIf="selectedTeam" [team]="selectedTeam" class="selectedTeam"></app-teamcard>
+        </div>
+
+        <button class="submit" (click)="createPlayer()">Create</button>
+    </div>
+</div>
+
+<div *ngIf="isActive === 'team'" class="content">
+    <div class="logodiv">
+        <img src="team_default.png" alt="logo" class="logosubmit"/>
+        <img src="add_light.png" alt="add button" class="logoadd"/>
+    </div>
+    <div class="inputs">
+        <div class="names team">
+            <div>
+                <label for="teamname">Team Name</label>
+                <input type="text" name="teamname" id="teamname" [(ngModel)]="teamname" placeholder="Enter team's name...">
+            </div>
+        </div>
+        <div class="games team">
+            <div>
+                <label for="league">League</label>
+                <input type="text" name="league" id="league" [(ngModel)]="league" placeholder="Enter team's league here...">
+            </div>
+
+            <div class="div2">
+                <label for="country">Country</label>
+                <input type="text" name="country" id="country" [(ngModel)]="country" placeholder="Enter team's country here...">
+            </div>
+        </div>
+
+        <button class="submit" (click)="createTeam()">Create</button>
+    </div>
+</div>

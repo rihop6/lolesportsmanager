@@ -3,14 +3,14 @@
     <div class="content">
         <img class="titleimg" src="title.png" alt="title"/>
         <p class="title">Esports Manager</p>
-        <app-searchbar class="search"></app-searchbar>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search Teams or Players...">
         <div class="searchcontent">
-            @for (t of teams; track $index) {
-                <app-teamcard [team]="t" class="player"></app-teamcard>
+            @for (t of filteredTeams; track $index) {
+                <app-teamcard [team]="t" (click)="teamClick(t.id)" class="player"></app-teamcard>
             }
             
-            @for (pl of players; track $index) {
-                <app-playercard [player]="pl" class="player"></app-playercard>
+            @for (pl of filteredPlayers; track $index) {
+                <app-playercard [player]="pl" (click)="playerClick(pl.id)" class="player"></app-playercard>
             }
         </div>
     </div>

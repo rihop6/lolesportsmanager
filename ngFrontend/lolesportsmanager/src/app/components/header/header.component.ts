@@ -12,7 +12,6 @@ export class HeaderComponent {
   isActive: number = 1;
 
   setActive(buttonIndex: number): void {
-    console.log("Function Called")
     this.isActive = buttonIndex;
   };
 }

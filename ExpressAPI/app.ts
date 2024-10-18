@@ -1,5 +1,6 @@
 // Get environment variables and get the port
 import * as express from "express";
+import * as cors from 'cors';
 import 'reflect-metadata';
 import playerRouter from "./controllers/player-controller"
 import teamRouter from "./controllers/team-controller"
@@ -22,6 +23,14 @@ const app = express();
 
 // MIDDLEWARE
 app.use(express.json());
+
+const corsOptions = {
+    origin: process.env.CORS_WHITELIST.split(','), // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Include credentials (like cookies) in requests
+};
+app.use(cors(corsOptions));
 
 // ROUTING
 app.use('/player', playerRouter);

@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Content&display=swap');
+
+.teambg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: auto;
+    z-index: -1;
+    opacity: 20%;
+}
+
+.error {
+    color: red;
+    position: absolute;
+    font-family: 'Content', sans-serif;
+    font-size: 50px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.success {
+    color: rgb(45, 168, 90);
+    position: absolute;
+    font-family: 'Content', sans-serif;
+    font-size: 50px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.content {
+    margin: 25px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: visible;
+    scrollbar-width: none;
+}
+
+.avatar {
+    position: relative;
+    width: 440px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar img {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.portraitimg {
+    width: 74%;
+    z-index: 1;
+}
+
+.avatarimg {
+    width: 220px;
+    z-index: 2;
+    bottom: 0;
+}
+
+.avatar:hover .avatarimg {
+    opacity: 20%;
+}
+
+.addimg {
+    bottom: 20%;
+    z-index: 3;
+    opacity: 0%;
+}
+
+.avatar:hover .addimg {
+    opacity: 100%;
+    transform: scale(1.1);
+}
+
+.toggle {
+    margin: 20px;
+}
+
+.toggle .active {
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.toggle button {
+    cursor: pointer;
+    background-color:rgb(69, 69, 69);
+    color: rgb(179, 179, 179);
+    padding: 6px 7px;
+    margin: 0 0 0 15px;
+    border-radius: 7px;
+    border: none;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+label {
+    font-size: 48px;
+    font-family: 'Content', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+.names {
+    width: 740px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.names div {
+    display: flex;
+    flex-direction: column;
+}
+
+.names input {
+    width: 300px;
+    padding: 10px 0 10px 20px;
+    border: 1px solid rgb(117, 117, 117);
+    border-radius: 8px;
+    background-color: rgb(45, 45, 45);
+    color: rgb(178, 178, 179);
+}
+
+.names input::placeholder {
+    color: rgb(179, 179, 179);
+    font-style: italic;
+}
+
+.games {
+    width: 1016px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 100px;
+}
+
+.rolepng {
+    width: 88px;
+    height: 88px;
+    margin: 25px -50px 0 0;
+}
+
+.games div {
+    display: flex;
+    flex-direction: column;
+}
+
+.games select {
+    // Remove dropdown arrow and replace with new one
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path fill="black" d="M0 0l5 6 5-6z"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+
+    width: 322px;
+    padding: 10px 0 10px 20px;
+    border: 1px solid rgb(117, 117, 117);
+    border-radius: 8px;
+    background-color: rgb(45, 45, 45);
+    color: rgb(178, 178, 179);
+  }
+
+  .games select option {
+    width: 322px;
+    padding: 10px;
+  }
+
+.games input {
+    width: 300px;
+    padding: 10px 0 10px 20px;
+    border: 1px solid rgb(117, 117, 117);
+    border-radius: 8px;
+    background-color: rgb(45, 45, 45);
+    color: rgb(178, 178, 179);
+}
+
+.games input::placeholder {
+    color: rgb(179, 179, 179);
+    font-style: italic;
+}
+
+.selectedTeam {
+    margin: 25px 0 0 -50px;
+}
+
+.submit {
+    margin: 50px;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(68, 155, 68);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.submit:active {
+    transform: scale(0.96);
+    background-color: rgb(45, 108, 45);
+}
+
+.logodiv {
+    position: relative;
+    width: 440px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logodiv img {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.logosubmit {
+    width: 600px;;
+    z-index: 1;
+}
+
+.logodiv:hover .logosubmit {
+    opacity: 60%;
+    transform: scale(0.9);
+}
+
+.logoadd {
+    width: 105px;
+    z-index: 2;
+    opacity: 0%;
+
+}
+
+.logodiv:hover .logoadd {
+    opacity: 100%;
+    transform: scale(1.25);
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.searchdiv {
+    position: relative;
+}
+
+.team-list {
+    position: absolute;
+    width: 322px;
+    max-height: 400px;
+    bottom: 0;
+    transform: translate(0, 100%);
+    background-color: rgb(69, 69, 69);
+    border: 1px solid rgb(117, 117, 117);
+    border-radius: 8px;
+    visibility: hidden;
+    height: 0%;
+    overflow-y: auto;
+    transition: height 0.3s ease;
+    scrollbar-width: none;
+}
+
+.expanded .team-list {
+    visibility: visible;
+    height: 300px;
+}
+
+.team-list ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.selectedTeam {
+    position: absolute;
+    right: -300px;
+}

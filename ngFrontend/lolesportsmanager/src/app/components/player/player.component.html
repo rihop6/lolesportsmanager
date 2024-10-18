@@ -1,0 +1,33 @@
+<img src="team_default.png" class="teambg"/>
+<div class="content">
+    <div class="avatar">
+        <img src="portrait.png" alt="portrait background" class="portraitimg"/>
+        <img src="avatar_light.png" alt="avatar" class="avatarimg"/>
+    </div>
+    <div class="inputs">
+        <div class="names">
+            <div>
+                <label for="username">Username</label>
+                <h1>{{ player.username }}</h1>
+            </div>
+
+            <div>
+                <label for="name">Full Name</label>
+                <h1>{{ player.name }}</h1>
+            </div>
+        </div>
+        <div class="games">
+            <img src="{{ roleimg }}" alt="Role Image" class="rolepng"/>
+            <div>
+                <label for="roleimg">Role</label>
+                <h1>{{ capitalizeRole() }}</h1>
+            </div>
+
+            <div class="searchdiv">
+                <label for="team">Team</label>
+                <h1>{{ playerteam.teamname }}</h1>
+            </div>
+            <app-teamcard [team]="playerteam" (click)="teamClick(playerteam.id)" class="selectedTeam"></app-teamcard>
+        </div>
+    </div>
+</div>

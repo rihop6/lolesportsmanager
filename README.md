@@ -50,9 +50,9 @@ DB_DATABASE=(database name you chose)
 
 ## 3. Start app
 Open a terminal in the ExpressAPI folder and run the command:
-    nodemon
+    ```nodemon```
 Open a terminal in the ngFrontend/lolesportsmanager folder and run the command:
-    ng serve --open
+    ```ng serve --open```
 
 # REST API
 

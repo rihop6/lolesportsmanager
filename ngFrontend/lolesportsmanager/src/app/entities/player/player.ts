@@ -4,14 +4,14 @@ export class Player {
     name: string;
     role: string;
     team_id: number;
-    avatar: Buffer;
+    avatar: Buffer | null;
 
     constructor(id: number,
                 username: string,
                 name: string,
                 role: string,
                 team_id: number,
-                avatar: Buffer) {
+                avatar: Buffer | null) {
         this.id = id;
         this.username = username;
         this.name = name;

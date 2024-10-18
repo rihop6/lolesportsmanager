@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Content&display=swap');
+
+.teambg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: auto;
+    z-index: -1;
+    opacity: 20%;
+}
+
+.content {
+    margin: 25px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: visible;
+    scrollbar-width: none;
+}
+
+.avatarimg {
+    margin: 50px 0 0 0;
+    width: 500px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+label {
+    font-size: 48px;
+    font-family: 'Content', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: lighter;
+    font-family: 'Content', sans-serif;
+    color: rgb(183, 183, 183);
+}
+
+.searchcontent {
+    width: 1250px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+

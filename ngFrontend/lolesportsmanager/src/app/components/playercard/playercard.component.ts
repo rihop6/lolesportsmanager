@@ -20,7 +20,7 @@ export class PlayercardComponent {
 
   ngOnInit() {
     this.getPlayerTeam();
-    switch(this.player.role.toLocaleLowerCase()) {
+    switch(this.player.role.toLowerCase()) {
       case 'top':
       case 'jungle':
       case 'mid':
